@@ -7,7 +7,7 @@
   * [Installation](#Installation)
   * [Tests](#Tests)
   * [Usage](#Tests)
-  * [User Story](#User Story)
+  * [Userstory](#Userstory)
   
  * [License](#License)
 
