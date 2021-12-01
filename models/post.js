@@ -14,7 +14,8 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: {
+
+    post_text: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
@@ -22,18 +23,6 @@ Post.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'id',
-      },
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    comment_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'comment',
         key: 'id',
       },
     },

@@ -24,13 +24,13 @@ const seedDatabase = async () => {
 }*/
   console.log('\n----- DATABASE SYNCED -----\n')
 
-  await seedUsers()
+  await seedUser()
   console.log('\n----- USERS SEEDED -----\n')
 
-  await seedPosts()
+  await seedPost()
   console.log('\n----- POSTS SEEDED -----\n')
 
-  await seedComments()
+  await seedComment()
   console.log('\n----- COMMENTS SEEDED -----\n')
 
   process.exit(0)
