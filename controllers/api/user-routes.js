@@ -1,55 +1,98 @@
-const router = require('express').Router()
-const { User } = require('../../models')
+const router = require('express').Router();
+const { User, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-//any route in here already has a /api/user infront of it
 
-router.post('/', async (req, res) => {
-  try {
-    const newUser = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-    })
+router.get('/', (req, res) => {
+  User.findAll({
+    attributes: { exclude: ['password'] }
+  })
+  .then(dbUserData => res.json(dbUserData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
 
+
+router.get('/:id', (req, res) => {
+  User.findOne({
+    attributes: { exclude: ['password'] },
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Post,
+        attributes: ['id', 'title', 'post_text', 'created_at']
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'created_at']
+      }
+    ]
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No User found with this id' });
+      return;
+    }
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+//create a new user
+router.post('/', (req, res) => {
+  User.create({
+    username: req.body.username,
+    password: req.body.password
+  })
+  .then(dbUserData => {
     req.session.save(() => {
-      req.session.userId = newUser.id
-      req.session.username = newUser.username
-      req.session.loggedIn = true
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
 
-      res.json(newUser)
+      res.json(dbUserData)
     })
+  })    
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
 
-    console.log('NEW USER SAVED TO DB', newUser)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
-
-//router.post("/login",)
+//login route
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
-      username: req.body.username,
-    },
-  }).then((dbUserData) => {
-    //verify user
-    if (!dbUserData) {
-      res.status(400).json({ message: 'Username not Found' })
-      return
+      username: req.body.username
     }
-    // in your login post here reference the User model and findOne( where: {username: req.body.username})
-    const validPassword = dbUserData.checkPassword(req.body.password)
+  })
+  .then(dbUserData => {
+    //verify user
+    if(!dbUserData) {
+      res.status(400).json({ message: 'Username not Found' });
+      return;
+    }
+    const validPassword = dbUserData.checkPassword(req.body.password);
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect Password' })
-      return
+      res.status(400).json({ message: 'Incorrect Password' });
+      return;
     }
     req.session.save(() => {
-      req.session.user_id = dbUserData.id
-      req.session.username = dbUserData.username
-      req.session.loggedIn = true
-      res.json({ user: dbUserData, message: 'You are now logged in!' })
-    })
-  })
-})
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      res.json({user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
+});
+
+//logout route
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -59,6 +102,8 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+//update a user by id number
 router.put('/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
@@ -77,6 +122,8 @@ router.put('/:id', (req, res) => {
     res.status(500).json(err);
   });
 });
+
+//Delete a user by id number
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
@@ -95,4 +142,6 @@ router.delete('/:id', (req, res) => {
     res.status(500).json(err);
   });
 });
-module.exports = router
+
+
+module.exports = router;
