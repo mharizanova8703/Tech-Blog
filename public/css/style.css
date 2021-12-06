@@ -9,16 +9,17 @@ html {
   font-family: sans-serif;
   color: rgb(0, 0, 0);
 }
+
 a {
   text-decoration: none;
-  color: white;
+  color:black;
   font-weight: bold;
   transition: color 0.1s;
 }
 .home-title {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 3rem;
-  color: white;
+  color:black;
   background-color: brown;
   padding: 10px;
   display: inline-block;
@@ -28,7 +29,7 @@ a {
 
 button {
   font-family: 'Open Sans Condensed', sans-serif;
-  background-color: burlywood;
+  background-color: rgba(222, 184, 135, 0.966);
   border: 0;
   padding: 1%;
   margin: 2%;
@@ -50,15 +51,15 @@ button:hover {
 
 textarea,
 input {
-  padding: 0.5%;
-  border-radius: 5px;
+  padding: 0, 5%;
+  border-radius: 8px;
   border: 1px solid #ccc;
 }
 
 textarea:focus,
 input:focus {
   outline: none;
-  border: 1px solid #3486eb;
+  border: 1px solid brown;
 }
 
 textarea {
@@ -93,12 +94,12 @@ header h1 {
   font-size: 1em;
 }
 
-main {
+ main {
   background-image: url();
   flex: 1;
   padding: 2% 4%;
-  background-color: rgba(255, 228, 196, 0.637);
-}
+  background-color: rgba(255, 228, 196, 0.637); */
+} 
 
 .btn-no-style {
   background: none;
@@ -119,7 +120,7 @@ main {
 }
 
 .post {
-  background-color: lightskyblue;
+  background-color: bisque;
   margin-bottom: 2%;
   line-height: 150%;
   border-color: black;
