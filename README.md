@@ -48,6 +48,10 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
    ## Screenshot
    
    
+   <img width="1440" alt="Screen Shot 2021-12-06 at 5 44 13 PM" src="https://user-images.githubusercontent.com/85656320/144938924-2640f27c-4708-4c8c-a235-6e460f9dd182.png">
+
+   
+   
    
 
    
