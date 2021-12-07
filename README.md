@@ -66,6 +66,9 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
    
 
   ## License 
+  
+  ![Github license](https://img.shields.io/badge/ISC-License%20-pink)
+    
     
 
     
@@ -75,9 +78,22 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
   ## Contributions
 
  
- Reference for help :
+ Reference for help  : @David Dyer djdyer
  
-  Guidance from: Tutor
+  Reference for help the helpers was not defined in a server.js : @Chrisolsen1993 
+  
+  
+  Reference for help  with Heroku deployment : @CChampness Chris Champness
+  
+
+  Advise bay tutor to not use seeds for this assigment in case the user have to create there own article 
+  
+  
+  Special thanks to a  Jamie TA: Debugging with me error 1054(Unknown column 'post.created_at' in 'field list')
+  
+  
+Support from AskBCS Learning Assistant:
+
      
 
   ## Issues
