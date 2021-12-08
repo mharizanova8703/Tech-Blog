@@ -44,10 +44,25 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
   ## Usage
   
   
+  * Node 
+  * HTML
+  * JS
+  * MVC
+  * Handlebars
+  * Controllers
+  * Modules
+  * MySql
+  * Express
+  * .Env
+  * Sequelize
+  * bcrypt
+  
+  
   https://user-images.githubusercontent.com/85656320/145047297-baaf6d2c-eb6c-417d-ba8f-9f2b18a48c9c.mov
 
   
-  
+  ![heroku](https://user-images.githubusercontent.com/85656320/140808846-93099449-9c1d-475e-9feb-8d8c20292b5b.png)
+ 
   
   https://guarded-earth-68916.herokuapp.com/
   
